@@ -1,0 +1,6 @@
+.*
+!.gitignore
+!.dockerignore
+
+/src
+/docker/mysql

@@ -1,0 +1,40 @@
+version: "3"
+services:
+  php:
+    build:
+      context: ./docker
+      args:
+        uid: $UID
+    ports:
+      - "80:80"
+      - "8888:8888" # Webpack Bundle Analyzer
+    volumes:
+      - ./src:/var/www/html
+      - ./docker/apache2/apache2.conf:/etc/apache2/apache2.conf
+      - ./docker/apache2/docker-php.conf:/etc/apache2/conf-available/docker-php.conf
+      - ./docker/apache2/sites-available:/etc/apache2/sites-available
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0.2
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=securerootpassword
+  mysql:
+    image: mysql:5.6.48
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      - MYSQL_ROOT_PASSWORD=securerootpassword
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
