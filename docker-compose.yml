@@ -25,13 +25,23 @@ services:
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOSTS=mysql
-      - PMA_USER=root
-      - PMA_PASSWORD=securerootpassword
+      - PMA_USER=devuser
+      - PMA_PASSWORD=securedevuserpassword
   mysql:
     image: mysql:5.6.48
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    entrypoint: >
+      bash -c "
+      usermod -o -u $UID mysql &&
+      groupmod -o -g $UID mysql &&
+      chown -R mysql:root /var/run/mysqld/ /var/log/mysql/ /var/lib/mysql/ &&
+      /entrypoint.sh mysqld
+      --character-set-server=utf8
+      --collation-server=utf8_unicode_ci"
     environment:
-      - MYSQL_ROOT_PASSWORD=securerootpassword
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=laravel_app
+      - MYSQL_USER=devuser
+      - MYSQL_PASSWORD=securedevuserpassword
     volumes:
       - ./docker/mysql:/var/lib/mysql
   mailhog:
