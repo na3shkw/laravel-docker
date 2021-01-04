@@ -28,10 +28,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # composer
-COPY --from=composer:1.10.9 /usr/bin/composer /usr/bin/composer
-# install speed-up plugin
-RUN composer config -g repos.packagist composer https://packagist.jp && \
-    composer global require hirak/prestissimo
+COPY --from=composer:2.0.8 /usr/bin/composer /usr/bin/composer
 
 # node
 COPY --from=node /usr/local/bin/ /usr/local/bin/
