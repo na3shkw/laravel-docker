@@ -42,9 +42,9 @@ Docker ComposeによるLaravelの開発環境（Apache+MySQL+phpMyAdmin+Mailhog�
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
-DB_DATABASE=
-DB_USERNAME=root
-DB_PASSWORD=securerootpassword
+DB_DATABASE=laravel_app
+DB_USERNAME=devuser
+DB_PASSWORD=securedevuserpassword
 ```
 
 #### メール
@@ -71,6 +71,3 @@ MAIL_ENCRYPTION=null
 | restart | すべてのコンテナを再起動 |
 | bash | アプリコンテナ（php-apache）のシェルに`devuser`でログイン |
 | bashroot | アプリコンテナ（php-apache）のシェルに`root`でログイン |
-
-## To Do
-* [ ] データベースに作業ユーザーを作成し、rootを使わないようにする
