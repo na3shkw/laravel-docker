@@ -4,14 +4,12 @@ Docker ComposeによるLaravelの開発環境（Apache+MySQL+phpMyAdmin+Mailhog�
 ## 構成
 * `php:7.4.7-apache`
     * `localhost`でアクセス
-    * `composer:1.10.9`
-        * スピードアッププラグイン`hirak/prestissimo`\
-            並列ダウンロードが可能なComposer2.0にアップグレード次第削除予定
+    * `composer:2.0.8`
     * `node`
         * Mixによるアセットコンパイルのため
     * `mhsendmail`
         * mailhogでメールを受信するため
-* `phpmyadmin/phpmyadmin:5.0.2`
+* `phpmyadmin/phpmyadmin:5.0.4`
     * データベースの管理と操作
     * `localhost:8080`でアクセス
 * `mysql:5.6.48`
