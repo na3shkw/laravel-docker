@@ -1,0 +1,15 @@
+{
+	"name": "laravel_app",
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+	],
+	"service": "php",
+	"workspaceFolder": "/var/www/html",
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"extensions": [
+		"bmewburn.vscode-intelephense-client"
+	],
+	"remoteUser": "devuser"
+}

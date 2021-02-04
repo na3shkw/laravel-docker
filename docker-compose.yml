@@ -9,6 +9,7 @@ services:
       - "80:80"
       - "8888:8888" # Webpack Bundle Analyzer
     volumes:
+      - ./:/workspace
       - ./src:/var/www/html
       - ./docker/apache2/apache2.conf:/etc/apache2/apache2.conf
       - ./docker/apache2/docker-php.conf:/etc/apache2/conf-available/docker-php.conf
