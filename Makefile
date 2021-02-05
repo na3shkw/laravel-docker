@@ -10,6 +10,7 @@ stop:
 	docker-compose stop
 init:
 	./update-uid.sh
+	mkdir src
 restart:
 	@make down
 	@make up
