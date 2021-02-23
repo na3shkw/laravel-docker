@@ -13,7 +13,7 @@ Docker ComposeによるLaravelの開発環境（Apache+MySQL+phpMyAdmin+Mailhog�
     * データベースの管理と操作
     * `localhost:8080`でアクセス
 * `mysql:5.6.48`
-    * データは`/docker/mysql`に保存され、永続化されます
+    * データは`/docker/mysql/data`に保存され、永続化されます
 * `mailhog/mailhog`
     * メールのテスト環境
     * `localhost:8025`でアクセス
@@ -57,6 +57,9 @@ MAIL_ENCRYPTION=null
 
 ### コンテナのシェルの利用
 `make bash`でコンテナのシェルに`devuser`としてログインできます。`root`としてログインしたい場合は`make bashroot`が利用できます。
+
+### テスト用データベース
+PHPUnitでのテスト用に`laravel_app_testing`データベースが利用できます。
 
 ## makeで利用可能なコマンド一覧
 | コマンド | 動作 |
