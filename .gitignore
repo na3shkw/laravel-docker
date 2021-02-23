@@ -5,4 +5,4 @@
 !/docker/.bashrc
 
 /src
-/docker/mysql
+/docker/mysql/data
