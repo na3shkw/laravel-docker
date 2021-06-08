@@ -7,7 +7,6 @@ RUN apt-get update && \
       vim \
       wget \
       unzip \
-      mariadb-client \
       libonig-dev \
       libzip-dev \
       libfreetype6-dev \
@@ -27,6 +26,10 @@ RUN apt-get update && \
     # reduce image size
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# MySQL Client
+COPY --from=mysql:8 /usr/bin/mysql /usr/bin/mysql
+COPY --from=mysql:8 /usr/bin/mysqldump /usr/bin/mysqldump
 
 # composer
 COPY --from=composer:2.0.8 /usr/bin/composer /usr/bin/composer
